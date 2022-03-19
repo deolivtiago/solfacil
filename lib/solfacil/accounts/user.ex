@@ -1,12 +1,14 @@
 defmodule Solfacil.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Solfacil.Blog.Post
 
   schema "users" do
     field :admin, :boolean, default: false
     field :email, :string
     field :name, :string
     field :password, :string
+    has_many :posts, Post, foreign_key: :author_id
 
     timestamps()
   end
