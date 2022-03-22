@@ -24,9 +24,11 @@ defmodule SolfacilWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SolfacilWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", SolfacilWeb do
+    pipe_through :api
+
+    resources "/users", UserController
+  end
 
   # Enables LiveDashboard only for development
   #
