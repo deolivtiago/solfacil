@@ -15,7 +15,7 @@
     <tr>
       <td><%= post.title %></td>
       <td><%= post.content %></td>
-      <td><%= post.author.name %></td>
+      <td><%= link post.author.name, to: Routes.user_path(@conn, :show, post.author.id) %></td>
 
       <td>
         <span><%= link "Show", to: Routes.post_path(@conn, :show, post) %></span>

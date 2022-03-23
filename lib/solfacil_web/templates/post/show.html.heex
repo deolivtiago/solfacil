@@ -14,7 +14,7 @@
 
   <li>
     <strong>Author:</strong>
-    <%= @post.author.name %>
+    <%= link @post.author.name, to: Routes.user_path(@conn, :show, @post.author.id) %>
   </li>
 
 </ul>
