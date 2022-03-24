@@ -24,7 +24,7 @@ defmodule SolfacilWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", SolfacilWeb do
+  scope "/api", SolfacilWeb, as: :api do
     pipe_through :api
 
     resources "/users", UserController

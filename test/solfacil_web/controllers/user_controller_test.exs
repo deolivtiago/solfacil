@@ -3,8 +3,18 @@ defmodule SolfacilWeb.UserControllerTest do
 
   import Solfacil.AccountsFixtures
 
-  @create_attrs %{admin: true, email: "some email", name: "some name", password: "some password"}
-  @update_attrs %{admin: false, email: "some updated email", name: "some updated name", password: "some updated password"}
+  @create_attrs %{
+    admin: true,
+    email: "some_email@mail.com",
+    name: "some name",
+    password: "some_password"
+  }
+  @update_attrs %{
+    admin: false,
+    email: "some_updated_email@mail.com",
+    name: "some updated name",
+    password: "some_updated_password"
+  }
   @invalid_attrs %{admin: nil, email: nil, name: nil, password: nil}
 
   describe "index" do
@@ -55,7 +65,7 @@ defmodule SolfacilWeb.UserControllerTest do
       assert redirected_to(conn) == Routes.user_path(conn, :show, user)
 
       conn = get(conn, Routes.user_path(conn, :show, user))
-      assert html_response(conn, 200) =~ "some updated email"
+      assert html_response(conn, 200) =~ "some_updated_email@mail.com"
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do

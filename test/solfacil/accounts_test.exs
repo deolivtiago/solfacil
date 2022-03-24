@@ -21,13 +21,18 @@ defmodule Solfacil.AccountsTest do
     end
 
     test "create_user/1 with valid data creates a user" do
-      valid_attrs = %{admin: true, email: "some email", name: "some name", password: "some password"}
+      valid_attrs = %{
+        admin: true,
+        email: "some_email@mail.com",
+        name: "some name",
+        password: "some_password"
+      }
 
       assert {:ok, %User{} = user} = Accounts.create_user(valid_attrs)
       assert user.admin == true
-      assert user.email == "some email"
+      assert user.email == "some_email@mail.com"
       assert user.name == "some name"
-      assert user.password == "some password"
+      assert user.password == "some_password"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -36,13 +41,19 @@ defmodule Solfacil.AccountsTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      update_attrs = %{admin: false, email: "some updated email", name: "some updated name", password: "some updated password"}
+
+      update_attrs = %{
+        admin: false,
+        email: "some_updated_email@mail.com",
+        name: "some updated name",
+        password: "some_updated_password"
+      }
 
       assert {:ok, %User{} = user} = Accounts.update_user(user, update_attrs)
       assert user.admin == false
-      assert user.email == "some updated email"
+      assert user.email == "some_updated_email@mail.com"
       assert user.name == "some updated name"
-      assert user.password == "some updated password"
+      assert user.password == "some_updated_password"
     end
 
     test "update_user/2 with invalid data returns error changeset" do

@@ -7,6 +7,7 @@ defmodule Solfacil.BlogTest do
     alias Solfacil.Blog.Post
 
     import Solfacil.BlogFixtures
+    import Solfacil.AccountsFixtures
 
     @invalid_attrs %{content: nil, title: nil}
 
@@ -21,7 +22,8 @@ defmodule Solfacil.BlogTest do
     end
 
     test "create_post/1 with valid data creates a post" do
-      valid_attrs = %{content: "some content", title: "some title"}
+      user = user_fixture()
+      valid_attrs = %{content: "some content", title: "some title", author_id: user.id}
 
       assert {:ok, %Post{} = post} = Blog.create_post(valid_attrs)
       assert post.content == "some content"

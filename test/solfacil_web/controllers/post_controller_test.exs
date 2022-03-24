@@ -2,8 +2,8 @@ defmodule SolfacilWeb.PostControllerTest do
   use SolfacilWeb.ConnCase
 
   import Solfacil.BlogFixtures
+  import Solfacil.AccountsFixtures
 
-  @create_attrs %{content: "some content", title: "some title"}
   @update_attrs %{content: "some updated content", title: "some updated title"}
   @invalid_attrs %{content: nil, title: nil}
 
@@ -23,7 +23,9 @@ defmodule SolfacilWeb.PostControllerTest do
 
   describe "create post" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.post_path(conn, :create), post: @create_attrs)
+      user = user_fixture()
+      create_attrs = %{content: "some content", title: "some title", author_id: user.id}
+      conn = post(conn, Routes.post_path(conn, :create), post: create_attrs)
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == Routes.post_path(conn, :show, id)
