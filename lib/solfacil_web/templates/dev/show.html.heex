@@ -1,0 +1,33 @@
+<h1>Show Dev</h1>
+
+<%= img_tag @dev.avatar_url, width: "128px" %>
+<ul>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @dev.username %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @dev.name %>
+  </li>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @dev.location %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= link "github", to: @dev.html_url, target: "_blank" %>
+  </li>
+
+  <li>
+    <strong>Bio:</strong><br/>
+    <%= @dev.bio %>
+  </li>
+
+</ul>
+
+<span><%= link "Back", to: Routes.dev_path(@conn, :index) %></span>

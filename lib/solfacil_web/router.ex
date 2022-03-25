@@ -21,6 +21,7 @@ defmodule SolfacilWeb.Router do
 
     resources "/users", UserController
     resources "/posts", PostController
+    resources "/devs", DevController
   end
 
   # Other scopes may use custom stacks.

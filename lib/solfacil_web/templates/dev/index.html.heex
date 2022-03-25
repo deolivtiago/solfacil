@@ -1,0 +1,31 @@
+<h1>Listing Devs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Location</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for dev <- @devs do %>
+    <tr>
+      <td><%= img_tag dev.avatar_url, width: "64px" %></td>
+      <td><%= dev.username %></td>
+      <td><%= dev.name %></td>
+      <td><%= dev.location %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.dev_path(@conn, :show, dev) %></span>
+        <span><%= link "Delete", to: Routes.dev_path(@conn, :delete, dev), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Dev", to: Routes.dev_path(@conn, :new) %></span>
